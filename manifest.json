@@ -1,11 +1,5 @@
 {
-  "name": "ts-template",
-  "description": "ts-template for Ubiquibot plugins.",
-  "ubiquity:listeners": ["issue_comment.created"],
-  "commands": {
-    "command1": {
-      "ubiquity:example": "/command1 argument",
-      "description": "Command 1 with an argument."
-    }
-  }
+  "name": "@ubiquity-os/pull-request-reviewer",
+  "description": "Reviews the diff of a PR when created and when ready for review ",
+  "ubiquity:listeners": ["pull_request.created", "pull-request.ready_for_review"]
 }

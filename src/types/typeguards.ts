@@ -9,6 +9,7 @@ import { Context } from "./context";
 /**
  * Restricts the scope of `context` to the `issue_comment.created` payload.
  */
-export function isIssueCommentEvent(context: Context): context is Context<"issue_comment.created"> {
-  return context.eventName === "issue_comment.created";
+
+export function isPullRequestEvent(context: Context): context is Context<"pull_request.created" | "pull_request.ready_for_review"> {
+  return context.eventName === "pull_request.created" || context.eventName === "pull_request.ready_for_review";
 }

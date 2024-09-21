@@ -1,9 +1,9 @@
 import { Octokit } from "@octokit/rest";
 import { Env, PluginInputs } from "./types";
 import { Context } from "./types";
-import { isIssueCommentEvent } from "./types/typeguards";
-import { helloWorld } from "./handlers/hello-world";
+import { isPullRequestEvent } from "./types/typeguards";
 import { LogLevel, Logs } from "@ubiquity-dao/ubiquibot-logger";
+import { reviewAndHandlePull } from "./handlers/review-pull-request";
 
 /**
  * The main plugin function. Split for easier testing.
@@ -11,8 +11,8 @@ import { LogLevel, Logs } from "@ubiquity-dao/ubiquibot-logger";
 export async function runPlugin(context: Context) {
   const { logger, eventName } = context;
 
-  if (isIssueCommentEvent(context)) {
-    return await helloWorld(context);
+  if (isPullRequestEvent(context)) {
+    return await reviewAndHandlePull(context);
   }
 
   logger.error(`Unsupported event: ${eventName}`);

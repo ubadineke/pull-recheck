@@ -9,7 +9,7 @@ import { Logs } from "@ubiquity-dao/ubiquibot-logger";
  *
  * ubiquity:listeners: ["issue_comment.created", ...]
  */
-export type SupportedEventsU = "issue_comment.created";
+export type SupportedEventsU = "pull_request.created" | "pull_request.ready_for_review";
 
 export type SupportedEvents = {
   [K in SupportedEventsU]: K extends WebhookEventName ? WebhookEvent<K> : never;
